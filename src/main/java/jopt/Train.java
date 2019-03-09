@@ -16,9 +16,12 @@ public class Train {
         this.targetValue = targetValue;
     }
 
-    public int run(int turn, int data) {
-        int largest = 0;
+    public float run(int turn, ITrainFunction trainFunction) {
+        float largest = 0.0f;
+
         for (int i = 0; i < turn; i++) {
+            float data = trainFunction.run();
+            System.out.println("Data:" + data);
             if (largest < data) {
                 largest = data;
             }

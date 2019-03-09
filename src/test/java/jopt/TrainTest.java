@@ -9,13 +9,17 @@ import java.util.Random;
 
 public class TrainTest {
     Random rand = new Random();
+    Search search = new Search();
 
     @Test public void testSomeLibraryMethod() {
         Train trainTest = new Train();
-        trainTest.run(5, getRandomValue());
+        trainTest.run(5, new TestFunction());
     }
 
-    private int getRandomValue() {
-        return rand.nextInt(100);
+    private class TestFunction implements ITrainFunction {
+        public float run() {
+            return search.uniform("test1", 10.0f, 20.0f);
+        }
     }
 }
+
