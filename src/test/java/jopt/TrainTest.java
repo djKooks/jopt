@@ -4,16 +4,17 @@
 package jopt;
 
 import org.junit.Test;
-import java.util.Random;
+
+import static junit.framework.TestCase.assertTrue;
 
 
 public class TrainTest {
-    Random rand = new Random();
     Search search = new Search();
 
-    @Test public void testSomeLibraryMethod() {
+    @Test public void testBasicOpt() {
         Train trainTest = new Train();
-        trainTest.run(5, new TestFunction());
+        float optValue = trainTest.run(5, new TestFunction());
+        assertTrue((optValue >= 10.0f) && (optValue <= 20.0f));
     }
 
     private class TestFunction implements ITrainFunction {
