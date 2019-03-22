@@ -1,2 +1,2 @@
-# jopt
+# optik
 Parameter optimizer

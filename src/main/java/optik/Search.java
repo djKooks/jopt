@@ -1,4 +1,4 @@
-package jopt;
+package optik;
 
 import java.util.HashSet;
 import java.util.Random;
