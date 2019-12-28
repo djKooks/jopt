@@ -10,16 +10,21 @@ import static junit.framework.TestCase.assertTrue;
 
 public class TrainTest {
     Search search = new Search();
+    Train trainTest = new Train();
 
-    @Test public void testBasicOpt() {
-        Train trainTest = new Train();
-        float optValue = trainTest.run(5, new TestFunction());
+    @Test public void testUniform() {
+        float optValue = trainTest.run(5, new TestUniformSearch());
         assertTrue((optValue >= 10.0f) && (optValue <= 20.0f));
     }
 
-    private class TestFunction implements ITrainFunction {
+    @Test public void testRandInt() {
+//        int optValue = (int) trainTest.run(5, new TestRandIntSearch());
+//        assertTrue((optValue > 0) && (optValue < 100));
+    }
+
+    private class TestUniformSearch implements ITrainFunction {
         public float run() {
-            return search.uniform("test1", 10.0f, 20.0f);
+            return search.uniform("test-1", 10.0f, 20.0f);
         }
     }
 }

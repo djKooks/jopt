@@ -8,10 +8,14 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
  * User Manual available at https://docs.gradle.org/5.2.1/userguide/java_library_plugin.html
  */
 
+group = "org.djkooks"
+version = "0.0.1"
+
 plugins {
     // Apply the java-library plugin to add support for Java Library
     `java-library`
-    kotlin("jvm") version "1.3.30"
+    kotlin("jvm") version "1.3.61"
+    id("org.jlleitschuh.gradle.ktlint") version "7.1.0"
 }
 
 repositories {
@@ -20,16 +24,22 @@ repositories {
     jcenter()
 }
 
+allprojects {
+    apply(plugin="org.jlleitschuh.gradle.ktlint")
+}
+
 dependencies {
 
     // Use JUnit test framework
     testImplementation("junit:junit:4.12")
     compile(kotlin("stdlib-jdk8"))
 }
+
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
     jvmTarget = "1.8"
 }
+
 val compileTestKotlin: KotlinCompile by tasks
 compileTestKotlin.kotlinOptions {
     jvmTarget = "1.8"
